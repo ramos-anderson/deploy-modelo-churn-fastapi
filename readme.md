@@ -62,7 +62,8 @@ O servidor estará rodando em http://127.0.0.1:8000.
 
 ---
 
-##📈 Como Testar a API via Swagger UI
+# 📈 Como Testar a API via Swagger UI
+
 O FastAPI gera uma documentação interativa automaticamente.
 Com o servidor rodando, acesse http://127.0.0.1:8000/docs no seu navegador.
 Clique no endpoint POST /prever_churn/ e em "Try it out".
@@ -83,3 +84,4 @@ JSON
   "fatura_mensal": 125
 }
 A previsão será retornada na seção "Response body" da interface.
+
