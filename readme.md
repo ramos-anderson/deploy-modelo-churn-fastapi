@@ -1,9 +1,6 @@
 # API de Previsão de Churn com FastAPI e Scikit-Learn
 
-![Status](https://img.shields.io/badge/status-concluído-green)
-![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.95-teal?logo=fastapi)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2-orange?logo=scikit-learn)
+![Status](https://img.shields.io/badge/status-concluído-green)![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)![FastAPI](https://img.shields.io/badge/FastAPI-0.95-teal?logo=fastapi)![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2-orange?logo=scikit-learn)
 
 Este projeto demonstra o **deploy** de um modelo de Machine Learning, levando-o do ambiente de desenvolvimento para uma **API REST funcional**. O objetivo é servir um modelo treinado para prever o churn de clientes, tornando-o consumível por outras aplicações (como um CRM ou um dashboard de front-end) via requisições HTTP.
 
@@ -41,47 +38,52 @@ O projeto é dividido em dois componentes principais:
 *   Ter o Python 3.9 (ou superior) instalado.
 
 **2. Clone o repositório:**
-git clone https://github.com/ramos-anderson/deploy-modelo-churn.git
-cd deploy-modelo-churn
+```bash
+git clone https://github.com/ramos-anderson/deploy-modelo-churn-fastapi.git
+cd deploy-modelo-churn-fastapi
+```
 
-**3. Crie um ambiente virtual e instale as dependências:**
+**3. Crie o ambiente virtual e instale as dependências:**
+```bash
 # Crie e ative o ambiente virtual
 python -m venv venv
 venv\Scripts\activate
 
 # Instale as bibliotecas
-pip install -r requirements.txt
+pip install -r requirements.txt```
 
 **4. Treine o modelo (apenas na primeira vez):**
+```bash
 python treinamento_modelo.py
-(Este comando criará o arquivo modelo_churn.pkl)
+```
 
 **5. Inicie a API:**
+```bash
 uvicorn main:app --reload
-O servidor estará rodando em http://127.0.0.1:8000.
+```
+O servidor estará rodando em `http://127.0.0.1:8000`.
 
 ---
 
-# 📈 Como Testar a API via Swagger UI
+## 📈 Como Testar a API via Swagger UI
 
 O FastAPI gera uma documentação interativa automaticamente.
-Com o servidor rodando, acesse http://127.0.0.1:8000/docs no seu navegador.
-Clique no endpoint POST /prever_churn/ e em "Try it out".
-No campo "Request body", insira os dados de um cliente para teste e clique em "Execute".
+
+1.  Com o servidor rodando, acesse **[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)** no seu navegador.
+2.  Clique no endpoint `POST /prever_churn/` e em "Try it out".
+3.  No campo "Request body", insira os dados de um cliente para teste e clique em "Execute".
 
 **Exemplo 1 (previsão de CHURN):**
-JSON
+```json
 {
   "tempo_contrato": 2,
   "fatura_mensal": 60
-}
+}```
 
 **Exemplo 2 (previsão de NÃO CHURN):**
-code
-JSON
+```json
 {
   "tempo_contrato": 48,
   "fatura_mensal": 125
 }
-A previsão será retornada na seção "Response body" da interface.
-
+```A previsão será retornada na seção "Response body".
